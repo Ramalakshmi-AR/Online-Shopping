@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-3">Search Results for: "{{ query }}"
+    <!-- <a href="/product/{{ p.id }}/"> -->
+</h3>
+
+{% if products %}
+<div class="row">
+    {% for p in products %}
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <img src="{{ p.image.url }}" class="card-img-top" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.title }}</h5>
+                    <p class="card-text">₹ {{ p.price }}</p>
+                    <a href="/add-to-cart/{{ p.id }}/" class="btn btn-primary w-100">
+                        Add to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No products found.</p>
+{% endif %}
+
+{% endblock %}

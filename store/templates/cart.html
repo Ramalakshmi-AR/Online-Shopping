@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Your Cart</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+    </tr>
+
+    {% for c in cart %}
+    <tr>
+        <td>{{ c.product.title }}</td>
+        <td>{{ c.quantity }}</td>
+        <td>₹ {{ c.total_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h4>Total: ₹ {{ total }}</h4>
+
+<a href="/checkout/" class="btn btn-success">Proceed to Checkout</a>
+<a href="{% url 'clear_cart' %}" class="btn btn-danger mt-3">Clear Cart</a>
+
+{% endblock %}

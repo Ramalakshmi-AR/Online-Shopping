@@ -1,0 +1,813 @@
+/* ---------------------------------------------------------
+   GLOBAL STYLES
+--------------------------------------------------------- */
+body {
+    background: #f5f6fa;
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+
+/* Headings */
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   NAVBAR
+--------------------------------------------------------- */
+.navbar {
+    padding: 15px 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    background: #0056b3;
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.navbar .btn {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Search bar */
+.navbar input[type="text"] {
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: 1px solid #aaa;
+}
+.navbar input[type="text"]:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 4px rgba(13,110,253,0.3);
+}
+
+/* ---------------------------------------------------------
+   CONTAINER / MAIN CONTENT
+--------------------------------------------------------- */
+.container {
+    max-width: 1200px;
+}
+
+/* ---------------------------------------------------------
+   PRODUCT CARDS (for home, product list, search)
+--------------------------------------------------------- */
+.product-card {
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    border-radius: 10px;
+}
+
+/* Product Title */
+.product-card .title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Price */
+.product-card .price {
+    font-size: 1.1rem;
+    color: #028a0f;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-add-cart {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    font-weight: 500;
+   
+}
+
+
+
+/* Carousel hero slide */
+.hero-slide {
+    height: 480px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark overlay */
+.hero-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Text content */
+.hero-content {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px black;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 6px black;
+}
+
+/* Fade effect smoothing */
+.carousel-item {
+    transition: opacity 1.2s ease-in-out;
+}
+
+
+/* Text animation base */
+.hero-content h1,
+.hero-content p,
+.hero-content a {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 1s ease-out forwards;
+}
+
+/* Delay each element for a stagger effect */
+.carousel-item.active .hero-content h1 {
+    animation-delay: 0.3s;
+}
+
+.carousel-item.active .hero-content p {
+    animation-delay: 0.6s;
+}
+
+.carousel-item.active .hero-content a {
+    animation-delay: 0.9s;
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Category Tiles */
+.category-tile {
+    text-decoration: none;
+}
+
+.tile-box {
+    background: #f1f1f1;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.tile-box:hover {
+    background: #0d6efd;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Product Card */
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
+}
+
+.product-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+/* ---------------------------------------------------------
+   CART PAGE
+--------------------------------------------------------- */
+.table {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+/* Total Amount */
+.total-box {
+    background: #fff;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   CHECKOUT PAGE
+--------------------------------------------------------- */
+.checkout-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------------------------------
+   FOOTER (if needed)
+--------------------------------------------------------- */
+footer {
+    margin-top: 50px;
+    background: #2e1edf;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+/* ---------------------------------------------------------
+   CATEGORY BUTTONS
+--------------------------------------------------------- */
+.category-buttons .btn {
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.category-buttons .btn:hover {
+    background: #0d6efd;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------------
+   PRODUCT GRID
+--------------------------------------------------------- */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+/* Product title */
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Price */
+.card-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #008000;
+    margin-bottom: 12px;
+}
+
+/* Add to Cart button */
+.card .btn {
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-weight: 500;
+    transition: 0.25s;
+   
+}
+
+.card .btn:hover {
+    background-color: #0a58ca !important;
+}
+
+/* ---------------------------------------------------------
+   NO PRODUCTS FOUND MESSAGE
+--------------------------------------------------------- */
+.text-danger {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   CART PAGE HEADER
+--------------------------------------------------------- */
+h3 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------------
+   CART TABLE
+--------------------------------------------------------- */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table th {
+    background: #0d6efd !important;
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.table td {
+    font-size: 1rem;
+    padding: 12px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Alternate row effect */
+.table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* ---------------------------------------------------------
+   TOTAL AMOUNT
+--------------------------------------------------------- */
+h4 {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 12px;
+    background: #fff;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------------------------------------
+   CHECKOUT BUTTON
+--------------------------------------------------------- */
+.btn-success {
+    margin-top: 15px;
+    padding: 10px 18px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #0a8f3c;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* --------------------- */
+/* Checkout Page Styling */
+/* --------------------- */
+
+h3 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Card box */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    margin: auto;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Total amount text */
+.card h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+}
+
+/* Pay button */
+#rzp-button {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #3399cc;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+#rzp-button:hover {
+    background-color: #287BA8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .card {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #rzp-button {
+        width: 100%;
+        padding: 14px;
+    }
+}
+/* --------------------- */
+/* Login Page Styling    */
+/* --------------------- */
+
+.login-box {
+    max-width: 4s50px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.login-box h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.login-box input {
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+.login-box input:focus {
+    border-color: #3399cc;
+    box-shadow: 0 0 5px rgba(51, 153, 204, 0.4);
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.login-box p {
+    text-align: center;
+    margin-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .login-box {
+        width: 92%;
+        padding: 20px;
+    }
+}
+
+a{
+    text-decoration: none;
+}
+
+/* ---------------------------- */
+/* Payment Success Page Styling */
+/* ---------------------------- */
+
+.success-box {
+    max-width: 450px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.success-box h2 {
+    color: #28a745;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background: #0056b3;
+}
+
+
+
+/* ------------------------------ */
+/* Payment Page Styling */
+/* ------------------------------ */
+
+.payment-container {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.payment-container h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+#pay-btn {
+    padding: 12px 25px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+#pay-btn:hover {
+    background-color: #1f8f43 !important;
+    transform: scale(1.05);
+}
+
+
+
+/* ------------------------------------- */
+/* All Products Page Styling */
+/* ------------------------------------- */
+
+.products-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Product Card */
+.card {
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Product Image */
+.card img {
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Product Title */
+.card-body h5 {
+    font-size: 18px;
+    font-weight: 600;
+    height: 45px;
+    overflow: hidden;
+    color: #222;
+}
+
+/* Price text */
+.card-body p {
+    font-size: 17px;
+}
+
+/* Buttons */
+.card-body .btn {
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.card-body .btn-outline-secondary:hover {
+    background: #f0f0f0;
+}
+
+.card-body .btn-primary {
+    background: #007bff;
+    border: none;
+}
+
+.card-body .btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Improve spacing */
+.row .col-md-3 {
+    margin-bottom: 20px;
+}
+
+
+/* ------------------------------------- */
+/* Search Results Page */
+/* ------------------------------------- */
+
+/* Search Title */
+.search-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Card Styling (same theme as product page) */
+.card {
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Product image uniform style */
+.card img {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+}
+
+/* Product title */
+.card-title {
+    font-size: 17px;
+    font-weight: 600;
+    height: 42px;
+    overflow: hidden;
+}
+
+/* Price */
+.card-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #28a745;
+}
+
+/* Buttons */
+.card .btn-primary {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* No products found text */
+.text-muted {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+
+
+/* ------------------------------------- */
+/* Signup Page Styling */
+/* ------------------------------------- */
+
+.signup-box {
+    max-width: 420px;
+    margin: 70px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.signup-box h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+}
+
+.signup-box input {
+    height: 48px;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.signup-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.signup-box button:hover {
+    background: #0056b3 !important;
+}
+
+
+.login-btn {
+    width: 150px;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: white;
+    font-size: 17px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.login-btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+

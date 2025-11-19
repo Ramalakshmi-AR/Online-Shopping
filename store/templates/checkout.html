@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Checkout</h3>
+
+<div class="card p-4 mb-3">
+    <h4>Total Amount: ₹ {{ total }}</h4>
+</div>
+
+<!-- Single Pay Now button with amount -->
+<button id="rzp-button" data-amount="{{ total }}">Pay Now</button>
+
+<!-- Include Razorpay checkout -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- JS logic -->
+<script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const csrftoken = getCookie('csrftoken');
+
+document.getElementById('rzp-button').onclick = function(e) {
+    e.preventDefault();
+
+    const amount = this.dataset.amount;
+
+    fetch("{% url 'create_order' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ amount: amount })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+
+        const options = {
+            key: "{{ razorpay_key }}", // Razorpay key from template
+            amount: data.amount,       // amount in paise
+            currency: "INR",
+            name: "OnlineShopping",
+            description: "Purchase Products",
+            order_id: data.id,
+            handler: function (response) {
+                window.location.href = "/payment_success/";
+            },
+            theme: { color: "#3399cc" }
+        };
+
+        const rzp1 = new Razorpay(options);
+        rzp1.open();
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Something went wrong!");
+    });
+};
+</script>
+
+{% endblock %}

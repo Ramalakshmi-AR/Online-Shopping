@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+
+        <!-- SLIDE 1 -->
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background-image: url('/static/store/images/hero2.jpg');">
+                <div class="hero-content">
+                    <h1>Welcome to E-Shopping</h1>
+                    <p>Discover the best products at unbeatable prices</p>
+                    <a href="#products" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('/static/store/images/hero3.avif');">
+                <div class="hero-content">
+                    <h1>Big Deals Every Day</h1>
+                    <p>Save more on your favorite items</p>
+                    <a href="#products" class="btn btn-warning btn-lg mt-3">Explore Deals</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('/static/store/images/hero4.jpeg');">
+                <div class="hero-content">
+                    <h1>Fast Delivery Guaranteed</h1>
+                    <p>Get your orders delivered quickly</p>
+                    <a href="#products" class="btn btn-success btn-lg mt-3">Start Shopping</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
+</div>
+
+<h3 class="mt-5 mb-3 fw-bold">🔥 Trending Products</h3>
+
+<div class="product-slider">
+
+    {% for p in products %}
+    <div class="product-slide-card">
+        <img src="{{ p.image.url }}" alt="{{ p.title }}">
+        <h6 class="mt-2">{{ p.title }}</h6>
+        <p class="price">₹ {{ p.price }}</p>
+        <a href="/add-to-cart/{{ p.id }}/" class="btn btn-dark w-100">Add to Cart</a>
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- Categories Section -->
+<h3 class="mt-5 mb-3 fw-bold">Shop by Categories</h3>
+<div class="d-flex flex-wrap gap-3">
+
+    {% for c in categories %}
+    <a href="/category/{{ c.id }}/" class="category-tile">
+        <div class="tile-box">
+            <span>{{ c.name }}</span>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+
+<!-- Products Section -->
+<h3 id="products" class="mt-5 mb-3 fw-bold">Latest Products</h3>
+<div class="row">
+
+    {% for p in products %}
+    <div class="col-md-3">
+        <div class="product-card shadow-sm">
+
+            <img src="{{ p.image.url }}" class="product-img" alt="{{ p.title }}">
+
+            <div class="p-3">
+                <h5 class="fw-bold">{{ p.title }}</h5>
+                <p class="text-primary fw-bold fs-5">₹ {{ p.price }}</p>
+
+                <a href="/add-to-cart/{{ p.id }}/" class="btn btn-dark w-100">
+                    Add to Cart
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+<script>
+   
+    const slider = document.querySelector('.product-slider');
+    slider.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY;
+    });
+
+
+    </script>

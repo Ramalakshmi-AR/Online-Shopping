@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="signup-box">
+    <h3>Create Account</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" class="form-control mb-3" placeholder="Username" required>
+        <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+        <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+
+        <button class="btn btn-primary">Signup</button>
+    </form>
+</div>
+
+{% endblock %}
