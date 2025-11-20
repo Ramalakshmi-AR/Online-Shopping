@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +28,8 @@ SECRET_KEY = 'django-insecure-wp!*m%%n@$7c!=(0dhdx*iynxgi9pmg^x&1)6$p&(ur3-b==l8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost",
-                "127.0.0.1",
-                "online-shopping-2-a39f.onrender.com"]
+ALLOWED_HOSTS = ['*']
+
 RAZORPAY_KEY_ID = 'rzp_test_RgQ7aqPF3uAVyp'
 RAZORPAY_KEY_SECRET = '5Ktz63WjFVnzVBfhAXgNWCHR'
 
@@ -79,10 +81,11 @@ WSGI_APPLICATION = 'OnlineShopping.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        ssl_require=False
+    )
 }
 
 
@@ -121,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 import os
 
 MEDIA_URL = '/media/'
@@ -132,3 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if 'RENDER' in os.environ or 'DYNO' in os.environ:
+    DEBUG = False
