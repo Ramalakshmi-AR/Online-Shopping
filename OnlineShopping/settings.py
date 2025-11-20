@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-wp!*m%%n@$7c!=(0dhdx*iynxgi9pmg^x&1)6$p&(ur3-b==l8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost",
+                "127.0.0.1",
+                "online-shopping-2-a39f.onrender.com"]
 RAZORPAY_KEY_ID = 'rzp_test_RgQ7aqPF3uAVyp'
 RAZORPAY_KEY_SECRET = '5Ktz63WjFVnzVBfhAXgNWCHR'
 
