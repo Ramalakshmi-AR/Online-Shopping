@@ -61,20 +61,6 @@
 
 </div>
 
-<h3 class="mt-5 mb-3 fw-bold">🔥 Trending Products</h3>
-
-<div class="product-slider">
-
-    {% for p in products %}
-    <div class="product-slide-card">
-        <img src="{{ p.image.url }}" alt="{{ p.title }}">
-        <h6 class="mt-2">{{ p.title }}</h6>
-        <p class="price">₹ {{ p.price }}</p>
-        <a href="/add-to-cart/{{ p.id }}/" class="btn btn-dark w-100">Add to Cart</a>
-    </div>
-    {% endfor %}
-
-</div>
 
 <!-- Categories Section -->
 <h3 class="mt-5 mb-3 fw-bold">Shop by Categories</h3>
@@ -116,13 +102,3 @@
 </div>
 
 {% endblock %}
-<script>
-   
-    const slider = document.querySelector('.product-slider');
-    slider.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        slider.scrollLeft += e.deltaY;
-    });
-
-
-    </script>
