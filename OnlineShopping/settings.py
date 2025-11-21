@@ -23,10 +23,9 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'DESKTOP-OE40O2I'
+    'DESKTOP-OE40O2I',
+    '.onrender.com'
 ]
-
-
 
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
